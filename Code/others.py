@@ -30,7 +30,7 @@ def find_ranking(similarity_table, weights=np.array([1,1,1])):
 
 def encode_inputs(input):
     ai_model="text-embedding-ada-002"
-    my_openai_api_key='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'
+    my_openai_api_key=''
     embeddings_model = OpenAIEmbeddings(model=ai_model, openai_api_key=my_openai_api_key)
     outputembedding=np.array(embeddings_model.embed_documents(input))
     return outputembedding
@@ -48,7 +48,7 @@ def generate_input_words(query, pg,user_id):
     prompt = PromptTemplate(template=template, input_variables=["query"])    
     prompt2 = PromptTemplate(template=template_2, input_variables=["query"])    
     
-    llm = OpenAI(temperature=0.3, openai_api_key='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')
+    llm = OpenAI(temperature=0.3, openai_api_key='')
     llm_chain = LLMChain(prompt=prompt, llm=llm)
     llm_chain2 = LLMChain(prompt=prompt2, llm=llm)
     
@@ -81,7 +81,7 @@ def generate_input_word2(answer):
     Generate 3 words from the input query.
     """
     prompt = PromptTemplate(template=template, input_variables=["query"])    
-    llm = OpenAI(temperature=0, openai_api_key='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')
+    llm = OpenAI(temperature=0, openai_api_key='')
     llm_chain = LLMChain(prompt=prompt, llm=llm)
     p = re.compile('[a-zA-Z]')
     
